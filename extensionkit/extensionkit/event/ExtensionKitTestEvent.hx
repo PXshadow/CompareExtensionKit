@@ -1,5 +1,5 @@
 package extensionkit.event;
-import flash.events.Event;
+import openfl.events.Event;
 
 
 class ExtensionKitTestEvent extends Event
