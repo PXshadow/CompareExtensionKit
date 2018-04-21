@@ -1,9 +1,12 @@
 package extensionkit;
 
 import extensionkit.event.ExtensionKitTestEvent;
+import openfl.events.Event;
 import openfl.events.IEventDispatcher;
-import flash.display.Stage;
+import openfl.display.Sprite;
+import openfl.display.Stage;
 import haxe.Json;
+import lime.system.System;
 import openfl.utils.Timer;
 import openfl.events.TimerEvent;
 
@@ -165,7 +168,7 @@ class ExtensionKit
     
     private static function VerifyDirectoryExists(path:String) : String
     {
-        #if !flash
+        #if (!flash && !html5)
         if (!sys.FileSystem.exists(path))
         {
             sys.FileSystem.createDirectory(path);
@@ -188,6 +191,7 @@ class ExtensionKit
     private static function CreateAndDispatchEvent(eventDispatcherId:Int, eventPackageAndClass:String, args:Array<Dynamic>) : Void
     {
         //TraceEvent(eventPackageAndClass, args);
+
         var eventClass = Type.resolveClass(eventPackageAndClass);
         if (eventClass == null)
         {
@@ -252,6 +256,6 @@ class ExtensionKit
 
     private static function get_stage() : Stage
     {
-        return flash.Lib.current.stage;
+        return openfl.Lib.current.stage;
     }
 }
