@@ -1,12 +1,9 @@
 package extensionkit;
 
 import extensionkit.event.ExtensionKitTestEvent;
-import flash.events.Event;
-import flash.events.IEventDispatcher;
-import flash.display.Sprite;
+import openfl.events.IEventDispatcher;
 import flash.display.Stage;
 import haxe.Json;
-import lime.system.System;
 import openfl.utils.Timer;
 import openfl.events.TimerEvent;
 
@@ -191,7 +188,6 @@ class ExtensionKit
     private static function CreateAndDispatchEvent(eventDispatcherId:Int, eventPackageAndClass:String, args:Array<Dynamic>) : Void
     {
         //TraceEvent(eventPackageAndClass, args);
-
         var eventClass = Type.resolveClass(eventPackageAndClass);
         if (eventClass == null)
         {
